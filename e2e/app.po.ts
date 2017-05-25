@@ -5,7 +5,15 @@ export class CarouselProtractorPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getCarouselSlideTitle() {
+    return element(by.css('.carousel-item.active .carousel-caption h3')).getText();
+  }
+
+  waitForSlideChange() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 5003);
+    });
   }
 }

@@ -9,6 +9,12 @@ describe('carousel-protractor App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+
+    expect(page.getCarouselSlideTitle()).toBe('First slide label');
+
+    return page.waitForSlideChange()
+      .then(() => {
+        expect(page.getCarouselSlideTitle()).toBe('Second slide label');
+      });
   });
 });
